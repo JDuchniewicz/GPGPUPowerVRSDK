@@ -45,6 +45,7 @@ pvr::Result GPGPUPowerVRSDK::initView()
 
 	// Enable culling
 	gl::Enable(GL_CULL_FACE);
+    gl::Disable(GL_DEPTH_TEST);
 	return pvr::Result::Success;
 }
 
@@ -56,7 +57,7 @@ pvr::Result GPGPUPowerVRSDK::releaseView()
 pvr::Result GPGPUPowerVRSDK::renderFrame()
 {
 	// Clears the color and depth buffer
-	gl::Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//	gl::Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	/*
 		Creates the Projection matrix using the PVR math tool.
