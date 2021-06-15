@@ -17,8 +17,6 @@ public:
 
 pvr::Result GPGPUPowerVRSDK::initApplication()
 {
-	m_surface.SetPosition(0, 0, -1);
-
 	return pvr::Result::Success;
 }
 
@@ -59,6 +57,7 @@ pvr::Result GPGPUPowerVRSDK::renderFrame()
 	// Clears the color and depth buffer
 //	gl::Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+    gl::ClearColor(1.0, 0.5, 0.5, 1.0);
 	/*
 		Creates the Projection matrix using the PVR math tool.
 		The tool returns the matrix using glm which is a cross-platform library
