@@ -68,14 +68,11 @@ bool Surface::Init(pvr::Shell* shell, pvr::EglContext &context)
 {
 	// Interleaved vertex data
 	GLfloat afVertices[] = { // Vertex 1
-							-0.4f+m_x, -0.4f+m_y, -2.0f+m_z,	// Position 1
-							 0.0f, 0.0f,					// Texture coodinate 1
+							-0.4f+m_x, -0.4f+m_y, -2.0f+m_z,
 							 // Vertex 2
-							 0.4f+m_x, -0.4f+m_y, -2.0f+m_z,	// Position 2
-							 1.0f, 0.0f,					// Texture coodinate 2
+							 0.4f+m_x, -0.4f+m_y, -2.0f+m_z,
 							 // Vertex 3
-							 0.0f+m_x,  0.4f+m_y, -2.0f+m_z,	// Position 3
-							 0.5f, 1.0f,					// Texture coodinate 3
+							 0.0f+m_x,  0.4f+m_y, -2.0f+m_z,
 							 };
 
 	// Create VBO for the triangle from our data
@@ -85,8 +82,8 @@ bool Surface::Init(pvr::Shell* shell, pvr::EglContext &context)
 	// Bind the VBO
 	gl::BindBuffer(GL_ARRAY_BUFFER, m_vbo);
 
-	// Calculate size of stride (position + texture coordinate = 3 + 2)
-	m_vertexStride = 5 * sizeof(GLfloat); // 3 floats for the pos, 2 for the UVs
+	// Calculate size of stride (position + texture coordinate = 3)
+	m_vertexStride = 3 * sizeof(GLfloat); // 3 floats for the pos
 
 	// Set the buffer's data
 	gl::BufferData(GL_ARRAY_BUFFER, 3 * m_vertexStride, afVertices, GL_STATIC_DRAW);

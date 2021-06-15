@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.3)
-project(IntroducingPVRUtils)
+project(GPGPUPowerVRSDK)
 
 # Include a set of reusable functions specific for the examples
 include("${CMAKE_CURRENT_LIST_DIR}/../../../examples/ExampleFunctions.cmake")
@@ -20,52 +20,52 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 # set the build outpout to the local location of the Project
 # set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
 
-set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT IntroducingPVRUtils)
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT GPGPUPowerVRSDK)
 
 set(SRC_FILES
-	OpenGLESIntroducingPVRUtils.cpp
-	Triangle.h
-	Triangle.cpp
+	GPGPUPowerVRSDK.cpp
+    Surface.h
+    Surface.cpp
 	)
 
-set(ASSET_FOLDER ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Assets_IntroducingPVRUtils)
+set(ASSET_FOLDER ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Assets_GPGPUPowerVRSDK)
 
 # Adds an executable (or ndk library for Android) and necessary files like plists for Mac/iOS etc.
-add_platform_specific_executable(IntroducingPVRUtils ${SRC_FILES})
+add_platform_specific_executable(GPGPUPowerVRSDK ${SRC_FILES})
 
 #################################### ASSET FILES ##########################################
 # For platforms supporting it, will be packaged with the executable for runtime use.
 # Will be accessible from the app with their "relative path". One call per base path
 
 ### Textures, scene files, generic resources... ###
-add_assets_to_target(IntroducingPVRUtils
-	SOURCE_GROUP "assets" 
-	ASSET_FOLDER ${ASSET_FOLDER} 
-	BASE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/
-	FILE_LIST 
-		Image.pvr
-		Image2.pvr
-		Image3.pvr
-	)
+#add_assets_to_target(GPGPUPowerVRSDK
+#	SOURCE_GROUP "assets"
+#	ASSET_FOLDER ${ASSET_FOLDER}
+#	BASE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/
+#	FILE_LIST
+#		Image.pvr
+#		Image2.pvr
+#		Image3.pvr
+#	)
 
 ### Textural shaders (OpenGL ES) ###
-add_assets_to_target(IntroducingPVRUtils
-	SOURCE_GROUP "shaders" 
-	ASSET_FOLDER ${ASSET_FOLDER} 
+add_assets_to_target(GPGPUPowerVRSDK
+	SOURCE_GROUP "shaders"
+	ASSET_FOLDER ${ASSET_FOLDER}
 	BASE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/
-	FILE_LIST 
+	FILE_LIST
 		FragShader.fsh
 		VertShader.vsh
 	)
 
 # Create and adds a Windows resource file (Resources.rc) with all the assets that have been added to the target with the previous functions
-add_assets_resource_file(IntroducingPVRUtils)
+add_assets_resource_file(GPGPUPowerVRSDK)
 ###########################################################################################
 
 # Apply SDK example specific compile and linker options
-apply_example_compile_options_to_target(IntroducingPVRUtils)
+apply_example_compile_options_to_target(GPGPUPowerVRSDK)
 
-target_link_libraries(IntroducingPVRUtils
+target_link_libraries(GPGPUPowerVRSDK
 	PVRShell
 	PVRUtilsGles
 )
